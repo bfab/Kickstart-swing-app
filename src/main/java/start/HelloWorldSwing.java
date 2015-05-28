@@ -5,6 +5,12 @@ package start;
  */
 import javax.swing.*;        
 
+import java.awt.Component;
+import java.io.File;
+import java.util.Arrays;
+
+import filedrop.FileDrop;
+
 public class HelloWorldSwing {
     /**
      * Create the GUI and show it.  For thread safety,
@@ -23,6 +29,16 @@ public class HelloWorldSwing {
         //Display the window.
         frame.pack();
         frame.setVisible(true);
+
+        handleFileDrop(frame);
+    }
+
+    private static void handleFileDrop(final Component comp) {
+        new FileDrop(comp, new FileDrop.Listener() {
+            public void filesDropped(File[] files) {
+                System.out.println("You dropped: " + Arrays.toString(files));
+            }
+        });
     }
 
     public static void main(String[] args) {
