@@ -1,0 +1,33 @@
+plugins {
+  id "edu.sc.seis.macAppBundle" version "2.1.0"
+}
+
+group = 'sample-group'
+version = '0.1'
+description = 'sample-description'
+
+
+apply plugin: 'maven'
+apply plugin: 'java' // implicitly applied by the 'application' plugin anyway
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version:'4.11'
+    testCompile group: 'org.mockito', name: 'mockito-core', version:'1.7'
+}
+
+
+mainClassName = "start.HelloWorldSwing"
+
+
+macAppBundle {
+    mainClassName = "start.HelloWorldSwing"
+}
+
